@@ -30,12 +30,12 @@ pub struct Function {
 
 impl Function {
 	/// Returns all input params of given function.
-	pub fn input_param_types(&self) -> Vec<ParamType> {
+	fn input_param_types(&self) -> Vec<ParamType> {
 		self.inputs.iter().map(|p| p.kind.clone()).collect()
 	}
 
 	/// Returns all output params of given function.
-	pub fn output_param_types(&self) -> Vec<ParamType> {
+	fn output_param_types(&self) -> Vec<ParamType> {
 		self.outputs.iter().map(|p| p.kind.clone()).collect()
 	}
 
