@@ -55,7 +55,9 @@ impl<'a> Deserialize<'a> for Operation {
 				Operation::Event(e)
 			}),
 			"fallback" => Ok(Operation::Fallback),
-			_ => Err(SerdeError::custom("Invalid operation type.")),
+			// TODO: we probably don't want to do something more
+			"receive" => Ok(Operation::Fallback),
+			e => Err(SerdeError::custom(&format!("Invalid operation type: {}", e))),
 		};
 		result.map_err(|e| D::Error::custom(e.to_string()))
 	}
